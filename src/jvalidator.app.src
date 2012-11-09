@@ -1,0 +1,12 @@
+{application, jvalidator,
+ [
+  {description, ""},
+  {vsn, "1"},
+  {registered, []},
+  {applications, [
+                  kernel,
+                  stdlib
+                 ]},
+  {mod, { jvalidator_app, []}},
+  {env, []}
+ ]}.
