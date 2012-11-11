@@ -5,4 +5,6 @@
               {applications,[kernel,stdlib]},
               {mod,{jvalidator_app,[]}},
               {env,[]},
-              {modules,[jvalidator_app,jvalidator_helper,jvalidator_sup]}]}.
+              {modules,[constraint_number,constraint_object,constraint_string,
+                        jvalidator_app,jvalidator_client_access,
+                        jvalidator_sup,jvalidator_validator]}]}.

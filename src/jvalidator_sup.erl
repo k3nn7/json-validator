@@ -23,5 +23,17 @@ start_link() ->
 %% ===================================================================
 
 init([]) ->
-    {ok, { {one_for_one, 5, 10}, []} }.
+	ClientAccess =
+		{jvalidator_client_access,
+		 {jvalidator_client_access, start_link, []},
+		 permanent,
+		 brutal_kill,
+		 worker,
+		 [jvalidator_client_access]
+		},
+
+    {ok, {{one_for_one, 5, 10}, 
+    	[
+    	 ClientAccess
+     	]}}.
 

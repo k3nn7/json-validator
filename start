@@ -1,4 +1,4 @@
 #! /bin/bash
 ./rebar clean
 ./rebar compile
-erl -config etc/app -pa ebin ../mochiweb/ebin
+erl -config etc/app -pa ebin ../mochiweb/ebin -eval 'application:start(jvalidator).'
