@@ -15,11 +15,17 @@ check(Json, {struct, Schema}, Errors, Parent) ->
 		<<"object">> ->
 			constraint_object:check(Json, Schema, Errors, Parent);
 
+		<<"array">> ->
+			constraint_array:check(Json, Schema, Errors, Parent);
+
 		<<"string">> ->
 			constraint_string:check(Json, Schema, Errors, Parent);
 
 		<<"number">> ->
 			constraint_number:check(Json, Schema, Errors, Parent);
+
+		<<"boolean">> ->
+			constraint_boolean:check(Json, Schema, Errors, Parent);
 
 		Type -> 
 			io:format("Error, type ~p...~n", [Type])
