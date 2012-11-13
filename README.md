@@ -6,7 +6,7 @@ JSON Schema implementation in Erlang and standalone validation server.
 ([Great tool for generating JSON schema from JSON](http://www.jsonschema.net/))
 * Start server (it listens on port 5000 by default, can be changed in `etc/app.config`)
 * `GET` request will just receive schema from server
-* `POST` request to schema will validate JSON sent as request body. 
+* `POST` request will validate JSON sent as request body. 
 Response will contain JSON-encoded array of validation errors or empty array if validation passes.
 
 ## Standalone mode example
@@ -22,7 +22,7 @@ Let's assume that webroot directory has following structure:
           +-- schema2.jsonschema
 
 * Request `GET localhost:5000/schemas_v1/schema1.jsonschema` will receive `webroot/schemas_v1/schema1.jsonschema`
-* Posting some JSON to `POST localhost:5000/schemas_v1/schema1.jsonschema` will validate posted JSON against schema
+* Request `POST localhost:5000/schemas_v1/schema1.jsonschema` will validate posted JSON against schema
 in `webroot/schemas_v1/schema1.jsonschema` file and return validation errors in response.
 
 ## Using as library
