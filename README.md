@@ -30,5 +30,11 @@ You may use JSON Validator as library. Required sources are `jvalidator_validato
 To perform validation you need to decode your JSON and JSON schema by `mochijson2:decode/1` function 
 and pass them to `jvalidator_validator:validate/2` function.
 
+## Example
+
+    Json2 = mochijson2:decode(Json),
+    Schema2 = mochijson2:decode(Schema),
+    ValidationErrors = jvalidator_validator:validate(Json2, Schema2).
+
 ## Requires
 * [Mochiweb](https://github.com/mochi/mochiweb)
