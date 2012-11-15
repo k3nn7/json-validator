@@ -10,7 +10,6 @@
 %% Check entry point
 %%
 check(Json, {struct, Schema}, Errors, Parent) ->
-	io:format("Start!~n"),
 	case proplists:get_value(<<"type">>, Schema) of
 		<<"object">> ->
 			constraint_object:check(Json, Schema, Errors, Parent);

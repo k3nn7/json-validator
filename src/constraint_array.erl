@@ -7,8 +7,6 @@ check(Element, Schema, Errors, Parent) ->
 	MyName = proplists:get_value(<<"id">>, Schema),
 	IsRequired  = proplists:get_value(<<"required">>, ItemsSchema, false),
 
-	io:format("~nChecking ARRAY: ~p with properties ~p~n", [Element, ItemsSchema]),	
-
 	case Element of
 		[] when IsRequired ->
 			[list_to_binary(io_lib:format("Array \"~s~s\" has no items", [Parent, MyName])) | Errors];
@@ -21,7 +19,6 @@ check(Element, Schema, Errors, Parent) ->
 								 <<Parent/binary, MyName/binary, ".">>);
 
 		_ -> 
-			io:format("WEIRD ERROR!!!!!!!!!!~n"),
 			error
 	end.
 

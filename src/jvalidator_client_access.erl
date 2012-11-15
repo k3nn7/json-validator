@@ -9,9 +9,9 @@ start_link() ->
 		   end,
 
 	mochiweb_http:start_link([
-							  {name, client_access},
+							  {name, jvalidator_client_access},
 							  {loop, Loop},
-							  {port, 3000}
+							  {port, 5000}
 							 ]).
 
 loop(Req) ->
@@ -33,8 +33,6 @@ loop(Req) ->
 		'POST' ->
 			case string:tokens(Path, "/") of
 				[] ->
-					io:format("Post query: ~p~n", [Query]),
-					io:format("Post body: ~p~n", [Body]),
 					format_response(Req, "Json-Validator");
 
 				_ ->
@@ -42,10 +40,7 @@ loop(Req) ->
 						{ok, Data} ->
 							Schema = mochijson2:decode(Data),
 							Json = mochijson2:decode(Body),
-
 							Result = jvalidator_validator:check(Json, Schema, [], <<"">>),
-							io:format("RESULT: ~p~n", [Result]),
-
 							format_response(Req, mochijson2:encode(Result));
 
 						{error, _} ->

@@ -3,8 +3,6 @@
 -export([check/4]).
 
 check(Element, Schema, Errors, Parent) ->
-	io:format("~nChecking BOOLEAN: ~p with schema ~p~n", [Element, Schema]),
-
 	Id = proplists:get_value(<<"id">>, Schema),
 	IsBoolean = is_boolean(Element),
 

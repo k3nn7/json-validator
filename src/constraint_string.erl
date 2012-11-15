@@ -3,8 +3,6 @@
 -export([check/4]).
 
 check(Element, Schema, Errors, Parent) ->
-	io:format("~nChecking STRING: ~p with schema ~p~n", [Element, Schema]),
-
 	Id = proplists:get_value(<<"id">>, Schema),
 	IsBinary = is_binary(Element),
 
