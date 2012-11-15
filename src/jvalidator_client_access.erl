@@ -8,10 +8,12 @@ start_link() ->
 				?MODULE:loop(Req)
 		   end,
 
+	{ok, Port} = application:get_env(jvalidator, listen_port),
+
 	mochiweb_http:start_link([
 							  {name, jvalidator_client_access},
 							  {loop, Loop},
-							  {port, 5000}
+							  {port, Port}
 							 ]).
 
 loop(Req) ->
@@ -40,7 +42,7 @@ loop(Req) ->
 						{ok, Data} ->
 							Schema = mochijson2:decode(Data),
 							Json = mochijson2:decode(Body),
-							Result = jvalidator_validator:check(Json, Schema, [], <<"">>),
+							Result = jvalidator_validator:validate(Json, Schema, [], <<"">>),
 							format_response(Req, mochijson2:encode(Result));
 
 						{error, _} ->

@@ -1,8 +1,8 @@
 -module(constraint_object).
 
--export([check/4]).
+-export([validate/4]).
 
-check(Element, Schema, Errors, Parent) ->
+validate(Element, Schema, Errors, Parent) ->
 	{struct, Properties} = proplists:get_value(<<"properties">>, Schema),
 	MyName = proplists:get_value(<<"id">>, Schema),
 
@@ -24,7 +24,7 @@ check_obj_properties(ObjProps, [{Name, {struct, Details}} | Rest], Errors, Paren
 
 	if
 		HasProperty ->
-			Errors2 = jvalidator_validator:check(proplists:get_value(Name, ObjProps), 
+			Errors2 = jvalidator_validator:validate(proplists:get_value(Name, ObjProps), 
 							{struct, Details}, Errors, Parent);
 
 		(not HasProperty) and IsRequired ->

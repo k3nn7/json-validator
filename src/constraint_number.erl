@@ -1,8 +1,8 @@
 -module(constraint_number).
 
--export([check/4]).
+-export([validate/4]).
 
-check(Element, Schema, Errors, Parent) ->
+validate(Element, Schema, Errors, Parent) ->
 	Id = proplists:get_value(<<"id">>, Schema),
 	IsInteger = is_integer(Element),
 

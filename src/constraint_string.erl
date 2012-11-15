@@ -1,8 +1,8 @@
 -module(constraint_string).
 
--export([check/4]).
+-export([validate/4]).
 
-check(Element, Schema, Errors, Parent) ->
+validate(Element, Schema, Errors, Parent) ->
 	Id = proplists:get_value(<<"id">>, Schema),
 	IsBinary = is_binary(Element),
 
