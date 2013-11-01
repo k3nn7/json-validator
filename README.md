@@ -1,6 +1,14 @@
 # JSON Validator
 JSON Schema implementation in Erlang and standalone validation server.
 
+## TODO
+- [x] Basic server logic
+- [x] Basic validation logic
+- [x] Constraints
+- [ ] Schema builder
+- [ ] Schema validation
+- [ ]  
+
 ## Standalone mode
 * Put your schemas in `webroot` directory. May use subdirectories too. 
 ([Great tool for generating JSON schema from JSON](http://www.jsonschema.net/))
