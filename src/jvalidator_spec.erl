@@ -1,0 +1,2 @@
+-module(jvalidator_spec).
+-export([]).

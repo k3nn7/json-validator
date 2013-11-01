@@ -6,5 +6,5 @@ build:
 clean:
 	@$(REBAR) clean
 
-run-dev:
+run-dev: build
 	@sh priv/start-dev.sh

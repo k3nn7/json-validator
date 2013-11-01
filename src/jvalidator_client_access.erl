@@ -29,7 +29,18 @@ loop(Req) ->
 					format_response(Req, "Json-Validator");
 
 				_ ->
-					Req:serve_file(Path, "webroot/")
+					Filename = list_to_binary(Path),
+					
+					try jvalidator_provider:get_schema(Filename) of
+						Schema ->
+							format_response(Req, Schema)
+					catch
+						throw:notfound ->
+							Req:respond({404, [], <<"Schema not found">>});
+
+						throw:invalid ->
+							Req:respond({500, [], <<"Invalid schema">>})		
+					end
 			end;
 
 		'POST' ->

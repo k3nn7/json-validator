@@ -7,7 +7,6 @@ JSON Schema implementation in Erlang and standalone validation server.
 - [x] Constraints
 - [ ] Schema builder
 - [ ] Schema validation
-- [ ]  
 
 ## Standalone mode
 * Put your schemas in `webroot` directory. May use subdirectories too. 
